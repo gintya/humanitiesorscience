@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>診断結果</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="container">
+  <h1>診断結果</h1>
+  <p class="type-code">{{ type_code }}</p>
+  <p class="description">
+    {% if type_code == 'RSTD' %}
+      理系で計画的、客観的なタイプです。分析力と論理性が強みです。
+    {% elif type_code == 'LSFC' %}
+      文系で感受性豊か、柔軟に対応するタイプです。人間関係を大切にします。
+    {% else %}
+      あなたのタイプは {{ type_code }} です。詳細な説明は準備中です。
+    {% endif %}
+  </p>
+  <a href="{{ url_for('index') }}" class="retry-btn">もう一度診断する</a>
+</div>
+</body>
+</html>
