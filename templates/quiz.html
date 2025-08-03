@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>理系文系診断 - 診断</title>
+  <style>
+    body { font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 700px; margin: auto; padding: 1rem; background: #f7f7f7; }
+    h1 { text-align: center; }
+    form { background: #fff; padding: 1rem 2rem; border-radius: 8px; box-shadow: 0 0 10px #ccc; }
+    .question { margin-bottom: 1.5rem; }
+    .question-text { font-weight: bold; margin-bottom: 0.5rem; }
+    .options label { margin-right: 2rem; cursor: pointer; }
+    button { display: block; margin: 2rem auto; padding: 0.7rem 2rem; font-size: 1.1rem; border: none; border-radius: 5px; background: #4caf50; color: white; cursor: pointer; }
+    button:hover { background: #45a049; }
+    audio { display: none; }
+  </style>
+</head>
+<body>
+  <h1>理系文系診断</h1>
+  <form method="post" action="/result">
+    {% for q in questions %}
+    <div class="question">
+      <div class="question-text">{{ loop.index }}. {{ q.text }}</div>
+      <div class="options">
+        <label><input type="radio" name="q{{ q.id }}" value="{{ q.options[0] }}" required> {{ q.labels[0] }}</label>
+        <label><input type="radio" name="q{{ q.id }}" value="{{ q.options[1] }}"> {{ q.labels[1] }}</label>
+      </div>
+    </div>
+    {% endfor %}
+    <button type="submit">診断する</button>
+  </form>
+
+  <audio autoplay loop>
+    <source src="{{ url_for('static', filename='audio/bgm.mp3') }}" type="audio/mpeg" />
+  </audio>
+</body>
+</html>
