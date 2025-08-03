@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>質問 {{ q + 1 }} / {{ total }}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="container">
+  <h1>質問 {{ q + 1 }} / {{ total }}</h1>
+  <p class="question">{{ question }}</p>
+  <form method="post" action="{{ url_for('answer') }}">
+    <input type="hidden" name="q" value="{{ q }}">
+    <button name="value" value="1" type="submit" class="btn yes">はい</button>
+    <button name="value" value="-1" type="submit" class="btn no">いいえ</button>
+  </form>
+  <audio controls autoplay loop>
+    <source src="{{ url_for('static', filename='bgm/quiz_bgm.mp3') }}" type="audio/mpeg" />
+    お使いのブラウザは音声をサポートしていません。
+  </audio>
+</div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
