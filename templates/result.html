@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>診断結果</title>
+  <style>
+    body { font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 700px; margin: auto; padding: 2rem; background: #f0f0f0; }
+    h1 { text-align: center; }
+    .result { background: #fff; padding: 2rem; border-radius: 10px; box-shadow: 0 0 15px #bbb; }
+    .type-name { font-size: 2.5rem; font-weight: bold; text-align: center; margin-bottom: 1rem; }
+    .description { font-size: 1.2rem; line-height: 1.6; }
+    a.button { display: block; margin: 2rem auto; padding: 0.7rem 2rem; width: fit-content; background: #2196f3; color: white; border-radius: 5px; text-decoration: none; text-align: center; }
+    a.button:hover { background: #0b7dda; }
+  </style>
+</head>
+<body>
+  <h1>診断結果</h1>
+  <div class="result">
+    <div class="type-name">{{ result }}</div>
+    <div class="description">
+      {% if result == "ACRD" %}
+        あなたは分析力に優れた理系タイプです。論理的思考と現実的な視点で問題を解決します。
+      {% elif result == "ACRF" %}
+        独創的な理系タイプ。柔軟な発想で新しい可能性を追求します。
+      {% elif result == "ACSD" %}
+        感情を理解しながらも計画的な理系タイプ。冷静さと情熱を兼ね備えています。
+      {% elif result == "ACSF" %}
+        感受性豊かな理系タイプ。流れに身を任せる柔軟性があります。
+      {% elif result == "AILD" %}
+        芸術的な感性と理論的な思考を併せ持つタイプ。計画的に行動します。
+      {% elif result == "AILF" %}
+        芸術的な感性を大切にし、柔軟に対応するタイプ。
+      {% elif result == "AILS" %}
+        感性豊かで人間関係も大切にするバランスタイプ。
+      {% elif result == "AILR" %}
+        理論的思考と共感力をバランスよく持つタイプ。
+      {% else %}
+        あなたのタイプは{{ result }}です。詳細な説明は準備中です。
+      {% endif %}
+    </div>
+  </div>
+  <a href="/quiz" class="button">もう一度診断する</a>
+  <a href="/" class="button">トップに戻る</a>
+</body>
+</html>
